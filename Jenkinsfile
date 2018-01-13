@@ -3,7 +3,7 @@ pipeline { // declarative
     stages{
         stage('Build'){
             steps {
-                sh 'mvn clean package' // shell action
+                bat 'mvn clean package' // shell action
             }
             post { // post-build
                 success { // condition
