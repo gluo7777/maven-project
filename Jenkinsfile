@@ -14,6 +14,9 @@ pipeline { // declarative
         }
         stage('Deploy to Staging'){
             steps {
+            	timeout(time:3, unit:'DAYS'){
+                    input message:'R u sure u want to do dis??'
+                }
                 build job: 'deploy-to-staging'
             }
         }
