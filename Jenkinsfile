@@ -17,5 +17,21 @@ pipeline { // declarative
                 build job: 'deploy-to-staging'
             }
         }
+        stage('Deploy to Production'){
+            steps {
+            	timeout(time:3, unit:'DAYS'){
+                    input message:'Approve PRODUCTION Deployment?'
+                }
+                build job: 'deploy-to-prod'
+            }
+            post{
+                success{
+                    echo 'Dude, your job rocks!'
+                }
+				failure{
+                    echo 'Dude, your job sucks!'
+                }
+            }
+        }
     }
 }
